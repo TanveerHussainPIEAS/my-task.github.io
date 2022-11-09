@@ -1,0 +1,134 @@
+<div class="main-container">
+
+    <h1>User Input Form!</h1>
+
+    <form    
+   
+    [formGroup]=" myFormGroup"
+    (ngSubmit)="onSubmit()"
+    
+    >
+
+    <div class="input-container" fxLayout="row wrap"
+    
+    >
+
+    
+        
+        <div class="single-input">
+            <mat-form-field appearance="fill">
+                <mat-label>Select Name</mat-label>
+                <input type="text" matInput [matAutocomplete] ="auto"   formControlName="nameInput" 
+                [class.is-invalid]="myFormGroup.get('nameInput').invalid && myFormGroup.get('nameInput').touched"
+                />
+                   
+
+                    <mat-error *ngIf="myFormGroup.get('nameInput').errors?.required">User Name is required</mat-error>
+                    <mat-error *ngIf="myFormGroup.get('nameInput').errors?.minLength || myFormGroup.get('nameInput').touched " >Name should have atleast 5 charcters</mat-error>
+                    <!-- <mat-error *ngIf="myFormGroup.get('nameInput').errors?.nameFound">Cannot use this name</mat-error> -->
+
+                    
+                <mat-autocomplete  #auto="matAutocomplete" [displayWith]="displayWith">
+                    <mat-option *ngFor=" let option of nameSortedList"  [value]="option"  >
+                        {{option.name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </div>
+
+        <div class="single-input">
+            <mat-form-field appearance="fill">
+                <mat-label>Session</mat-label>
+                <mat-select matNativeControl required placeholder="Select Session" formControlName="sessionInput">
+                    
+                    <mat-option 
+                    *ngFor=" let session of forSessionList"
+                    [value]="session.session">
+                      {{session.session}}
+                    </mat-option>
+                                  
+                </mat-select>              
+            </mat-form-field>
+        </div>
+
+        <div class="single-input">
+            <mat-form-field appearance="fill">
+                <mat-label>Year</mat-label>
+                <mat-select matNativeControl required placeholder="Select Session" formControlName="yearInput">
+                    <mat-option 
+                    *ngFor="let year of listOfYears"
+                    [value]="year"
+                    >                    
+                  {{year}}        
+                </mat-option>
+                                   
+                </mat-select>              
+            </mat-form-field>
+        </div>
+
+
+
+
+       
+
+          <div class="single-input">
+            <mat-form-field appearance="fill">
+                <mat-label>Courses</mat-label>                    
+                <mat-select formControlName="coursesInput" multiple required >                                
+                  <mat-option *ngFor="let course of forCoursesList" [value]="course">{{course.coursename}}</mat-option>
+                </mat-select>               
+              </mat-form-field>
+        </div>
+
+
+        <div class="single-input">
+            <mat-form-field appearance="fill">
+                <mat-label>Test Email</mat-label>
+                <input type="email" matInput  formControlName="emailInput" >
+                    <mat-error *ngIf="myFormGroup.get('emailInput').errors?.required">Email is required</mat-error>
+                    <mat-error *ngIf="myFormGroup.get('emailInput').errors?.email">Invalid email</mat-error>                    
+              </mat-form-field>
+        </div>
+
+
+        <div class="single-input">
+            <mat-form-field appearance="fill">
+                <mat-label>URL Velidation</mat-label>
+                <input type="url" matInput  formControlName="URLInput" >
+                    <mat-error *ngIf="myFormGroup.get('URLInput').errors?.required">URL is required</mat-error>
+                    <mat-error *ngIf="myFormGroup.get('URLInput').errors?.invalidURL">Invalid URL</mat-error>                    
+              </mat-form-field>
+        </div>
+
+
+    </div>
+
+    <div class="my-submit-button">
+        <button type="submit"  mat-raised-button color="primary" 
+            [disabled]="myFormGroup.invalid"
+        >
+            Submit
+        </button>
+    </div>
+
+
+    <!-- <div class="single-input">
+            <mat-form-field appearance="fill">
+                <mat-label>Test Field</mat-label>
+                <input type="text" matInput [matAutocomplete] ="auto"   formControlName="nameInput " />
+                    <div *ngIf="getNameInput.invalid && getNameInput.touched">
+                        <small *ngIf="getNameInput.errors?.required" class="nameRequired">User Name is Required</small>
+                        <small *ngIf="getNameInput.errors?.minLength" class="nameRequired">User Name must be greater than 4 characters</small>
+                    </div>
+                <mat-autocomplete  #auto="matAutocomplete" [displayWith]="displayWith">
+                    <mat-option *ngFor=" let option of nameSortedList"  [value]="option"  >
+                        {{option.name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </div> -->
+
+</form>
+
+
+</div>

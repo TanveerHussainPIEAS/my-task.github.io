@@ -1,0 +1,122 @@
+<div class="main-container">
+
+    <div class="head-container">
+        <p>Let's do custom validation</p>
+    </div>
+    <!-- End of head-container -->
+
+    <div class="form-comtainer">
+        <form  
+        fxLayout="row wrap" 
+        [formGroup]="myForm"
+        (ngSubmit)="onSubmit()"
+        >
+
+
+
+        <div class="single-input">
+            <mat-form-field appearance="fill">
+                <mat-label>User Name</mat-label>
+                <input matInput type="text" formControlName="userNameControl">
+                <mat-error *ngIf="myForm.get('userNameControl').errors?.required">User Name is required</mat-error>
+                <mat-error *ngIf="myForm.get('userNameControl').errors?.pattern">*Invalid User Name....  Should Start with Alphabet. Spcial Characters Not Allowed </mat-error>
+            </mat-form-field>
+        </div>
+        <!-- End of single-input -->
+
+
+
+            <div class="single-input">
+                <mat-form-field appearance="fill">
+                    <mat-label>Phone Number</mat-label>
+                    <input matInput type="text" formControlName="phoneNumberControl">
+                    <mat-error *ngIf="myForm.get('phoneNumberControl').errors?.required">Phone Number is required</mat-error>
+                    <mat-error *ngIf="myForm.get('phoneNumberControl').errors?.pattern">Should be like: +92-345-1234567 (Pak networks) </mat-error>
+                </mat-form-field>
+            </div>
+            <!-- End of single-input -->
+
+            <div class="single-input">
+                <mat-form-field appearance="fill">
+                    <mat-label>CNIC</mat-label>
+                    <input matInput type="text" formControlName="cnicControl">
+                    <mat-error *ngIf="myForm.get('cnicControl').errors?.required">CNIC is required</mat-error>
+                    <mat-error *ngIf="myForm.get('cnicControl').errors?.pattern">Should be like: 12345-1234567-1 </mat-error>
+                </mat-form-field>
+            </div>
+            <!-- End of single-input -->
+
+            <div class="single-input">
+                <mat-form-field appearance="fill">
+                    <mat-label>Date of Birth</mat-label>
+                    <input matInput type="text" formControlName="dobControl">
+                    <mat-error *ngIf="myForm.get('dobControl').errors?.required">Bate of Birth is required</mat-error>
+                    <mat-error *ngIf="myForm.get('dobControl').errors?.pattern">Should be like: 23/Jun/2021 </mat-error>
+                </mat-form-field>
+            </div>
+            <!-- End of single-input -->
+
+            <div class="single-input">
+                <mat-form-field appearance="fill">
+                    <mat-label>User Type</mat-label>
+                    <mat-select [(value)]="userType" placeholder="Please Select" formControlName="userTypeControl" (click)="onChangeUser()">
+                        <mat-option value="mekdiz">Mekdiz User</mat-option>
+                        <mat-option value="gmail">Gmail User</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="myForm.get('userTypeControl').errors?.required">*Required</mat-error>
+                    
+                </mat-form-field>
+                
+            </div>
+            <!-- End of single-input -->
+
+
+            <div class="single-input">
+                <mat-form-field appearance="fill">
+                    <mat-label>User Email</mat-label>
+                    <input matInput type="text" formControlName="userEmailControl" [(ngModel)]="enteredEmail">
+                    <mat-error *ngIf="myForm.get('userEmailControl').errors?.required">*Email is required</mat-error>
+                        <div class="user" *ngIf="userType==='mekdiz'" >
+                            <mat-error *ngIf="myForm.get('userEmailControl').errors?.pattern && userType==='mekdiz'  ">Please Use Mekdiz Account </mat-error>
+
+                        </div>
+
+                        <div class="user" *ngIf="userType==='gmail'"  >
+                            <mat-error *ngIf="myForm.get('userEmailControl').errors?.pattern &&userType==='gmail'  ">Please Use Google Account  </mat-error>
+                        </div>
+                    
+                   
+
+                </mat-form-field>
+                
+            </div>
+            <!-- End of single-input -->
+
+
+           
+
+           
+
+
+
+
+            <div class="myButton">
+                <button type="submit" 
+                mat-raised-button color="primary" 
+                [disabled]="myForm.invalid"
+
+                
+                >
+                    Submit
+                </button>
+            </div>
+
+
+        </form>
+
+    </div>
+    <!-- End of form-container -->
+</div>
+<!-- End of main-container  -->
+
+

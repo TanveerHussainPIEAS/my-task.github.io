@@ -1,0 +1,14 @@
+
+.navbar{
+    width: 100%;
+    height: auto;
+}
+.container{
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+}
+button{
+    padding-right: 1rem;
+    margin-right: 1.5rem;
+}

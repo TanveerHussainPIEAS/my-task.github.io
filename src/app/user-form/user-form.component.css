@@ -1,0 +1,22 @@
+
+form{
+    padding: 5px;
+    margin-left: 5px;
+}
+
+.single-input{
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.my-submit-button{
+    margin-left: 20px;
+}
+
+.nameRequired{
+    color: red;
+    font-size: small;
+}
+
+
+

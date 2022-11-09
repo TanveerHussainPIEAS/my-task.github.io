@@ -1,0 +1,49 @@
+<div class="name">
+    <p>Name: {{studentClassDetails[0].name}}</p>
+    <p>Student Id:{{studentClassDetails[0].id}}</p>
+    <p>Class :{{studentClassDetails[0].classname}}</p>
+ </div>
+ 
+ 
+ <table mat-table  [dataSource]=" aliRaza" class="mat-elevation-z8 demo-table">
+    
+   
+     
+    
+   <!-- Sr No. Column -->
+   <ng-container matColumnDef="sr">
+    <th mat-header-cell *matHeaderCellDef> Serial Number </th>
+    <td mat-cell  *matCellDef="let i=index"     
+    > {{i+1}} </td>
+  </ng-container>
+    
+    <!-- Courses -->
+    <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> New Id </th>
+        <td mat-cell *matCellDef="let element"> 
+            
+           {{element.courseCode}} -  {{element.coursename}} 
+        
+        </td>
+      </ng-container> 
+    
+    
+    
+    
+    <!-- Courses -->
+     <ng-container matColumnDef="Credit Hours">
+       <th mat-header-cell *matHeaderCellDef> Courses </th>
+       <td mat-cell *matCellDef="let element"> {{element.creditHours}} </td>
+     </ng-container> 
+ 
+     
+     
+   
+     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+     <tr mat-row *matRowDef="let row; columns: displayedColumns;let element" 
+     
+     ></tr>
+   </table>
+
+
+
